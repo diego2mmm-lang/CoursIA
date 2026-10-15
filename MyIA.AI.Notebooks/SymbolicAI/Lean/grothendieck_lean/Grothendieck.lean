@@ -51,6 +51,7 @@ import Grothendieck.GodementAcyclicity
 import Grothendieck.GodementResolution
 import Grothendieck.GodementCanonicalDiff
 import Grothendieck.GodementExactness
+import Grothendieck.GodementComplex
 import Grothendieck.KanExtensions
 import Grothendieck.LawvereTierney
 import Grothendieck.LeftExact
@@ -245,6 +246,21 @@ Substance réelle :
   (pr-review-discipline §B). La **séparéité du conoyau** par recollement sur
   faisceau, qui ferme la boucle, est la frontière nommée de la Partie 91,
   qui posera l'énoncé ET sa preuve.
+- `Grothendieck.GodementComplex` (Partie 92) : le **complexe de Godement
+  comme objet** — l'itération du pas canonique à tous les degrés. La chaîne
+  `godementDChain` est définie par récursion (`d^{n+1} = godementStep dⁿ`,
+  chaque flèche passant par le conoyau de la précédente), la
+  **null-composition** `dⁿ ≫ d^{n+1} = 0` vaut à tout degré
+  (`godementCanonicalD_comp_zero`, instance de `comp_godementStep_zero` P89),
+  et l'assemblage en `CochainComplex … ℕ` passe par le constructeur canonique
+  `CochainComplex.of` de Mathlib (`godementCanonicalComplex`, avec lemmes
+  d'interface `godementCanonicalComplex_d_zero/_one` recalant sur les `d⁰`/`d¹`
+  de P89/P90). La résolution canonique existe maintenant **comme objet
+  complexe** — le contraste définitif avec la Partie 87 (itération de l'unité :
+  pas un complexe, témoin injectif). L'**acyclicité** `Hⁿ(C⁰F) = 0` pour
+  `n ≥ 1` ([God58] II Th. 5.2.1), qui exigera l'itération de l'exactitude de
+  la Partie 91 le long de la chaîne, reste la frontière nommée de la
+  Partie 93.
 
 Tous les `sorry`s ne sont pas comblés — la plupart sont des échafaudages
 intentionnels pour le prouveur multi-agent (cf. Epic #1453).
@@ -398,6 +414,20 @@ Substance (English):
   class (pr-review-discipline §B). The **separatedness of the cokernel** by
   gluing on sheaves, which closes the loop, is the named frontier of Part
   91, which will pose the statement AND its proof.
+- `Grothendieck.GodementComplex` (Part 92) : the **Godement complex as an
+  object** — iterating the canonical step at all degrees. The chain
+  `godementDChain` is defined by recursion (`d^{n+1} = godementStep dⁿ`, each
+  arrow passing through the cokernel of the previous one), **null-composition**
+  `dⁿ ≫ d^{n+1} = 0` holds at every degree
+  (`godementCanonicalD_comp_zero`, an instance of `comp_godementStep_zero`
+  P89), and the assembly as a `CochainComplex … ℕ` goes through Mathlib's
+  canonical constructor `CochainComplex.of` (`godementCanonicalComplex`, with
+  interface lemmas `godementCanonicalComplex_d_zero/_one` calibrating on the
+  `d⁰`/`d¹` of P89/P90). The canonical resolution now exists **as a complex
+  object** — the definitive contrast with Part 87 (unit iteration: not a
+  complex, injective witness). **Acyclicity** `H^n(C⁰F) = 0` for `n ≥ 1`
+  ([God58] II Th. 5.2.1), which will require iterating Part 91's exactness
+  along the chain, remains the named frontier of Part 93.
 
 Not all `sorry`s are filled — most are intentional scaffolds for the
 multi-agent prover (cf. Epic #1453).
